@@ -36,5 +36,10 @@ func day1(input: [String]) {
 }
 
 func day2(input: [String]) {
-    print(input)
+    let boxes = input.map { BoxVolume($0) }
+    let areas = boxes.map { $0.surfaceArea + $0.smallestSideArea }
+    let total = areas.reduce(0, +)
+    print("Total area = \(total) sq-feet")
+    let totalRibbon = boxes.map { $0.smallestPerimeter + $0.volume }.reduce(0, +)
+    print("Total ribbon = \(totalRibbon) feet")
 }
