@@ -11,6 +11,7 @@
 		2830411B2919C4BC00010645 /* week1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2830411A2919C4BC00010645 /* week1.swift */; };
 		283041202919C83500010645 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2830411F2919C83500010645 /* util.swift */; };
 		28AFA6B3291B13930002FDC7 /* volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFA6B2291B13930002FDC7 /* volume.swift */; };
+		28AFA6B6291B1C270002FDC7 /* coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFA6B5291B1C270002FDC7 /* coordinates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,9 @@
 		28AFA6B1291B132C0002FDC7 /* day2_tests.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day2_tests.txt; sourceTree = "<group>"; };
 		28AFA6B2291B13930002FDC7 /* volume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = volume.swift; sourceTree = "<group>"; };
 		28AFA6B4291B17550002FDC7 /* day2_input.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day2_input.txt; sourceTree = "<group>"; };
+		28AFA6B5291B1C270002FDC7 /* coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coordinates.swift; sourceTree = "<group>"; };
+		28AFA6B7291B1E1F0002FDC7 /* day3_input.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day3_input.txt; sourceTree = "<group>"; };
+		28AFA6B8291B1E3E0002FDC7 /* day3_tests.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day3_tests.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 		283041122919C42E00010645 /* AoC 2015 */ = {
 			isa = PBXGroup;
 			children = (
+				28AFA6B5291B1C270002FDC7 /* coordinates.swift */,
 				283041132919C42E00010645 /* main.swift */,
 				2830411F2919C83500010645 /* util.swift */,
 				28AFA6B2291B13930002FDC7 /* volume.swift */,
@@ -79,10 +84,12 @@
 		2830411C2919C57200010645 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2830411D2919C5A800010645 /* day1_tests.txt */,
 				2830411E2919C5F800010645 /* day1_input.txt */,
-				28AFA6B1291B132C0002FDC7 /* day2_tests.txt */,
+				2830411D2919C5A800010645 /* day1_tests.txt */,
 				28AFA6B4291B17550002FDC7 /* day2_input.txt */,
+				28AFA6B1291B132C0002FDC7 /* day2_tests.txt */,
+				28AFA6B7291B1E1F0002FDC7 /* day3_input.txt */,
+				28AFA6B8291B1E3E0002FDC7 /* day3_tests.txt */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -148,6 +155,7 @@
 				283041202919C83500010645 /* util.swift in Sources */,
 				283041142919C42E00010645 /* main.swift in Sources */,
 				2830411B2919C4BC00010645 /* week1.swift in Sources */,
+				28AFA6B6291B1C270002FDC7 /* coordinates.swift in Sources */,
 				28AFA6B3291B13930002FDC7 /* volume.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

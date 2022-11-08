@@ -43,3 +43,36 @@ func day2(input: [String]) {
     let totalRibbon = boxes.map { $0.smallestPerimeter + $0.volume }.reduce(0, +)
     print("Total ribbon = \(totalRibbon) feet")
 }
+
+func day3(input: [String]) {
+    let bigNumber = 0xf000000
+    for instructions in input {
+        var visitedHouses: [Int: Int] = [0: 1]
+        var position = Coord2D(0, 0)
+        for direction in instructions {
+            position = updatePosition(coord: position, direction: direction)
+            let index = toIndex(coord: position, width: bigNumber)
+            visitedHouses[index, default: 0] += 1
+        }
+        // part 1
+        print("#visitedHouses = \(visitedHouses.count)")
+        // part 2
+        visitedHouses = [0: 2]
+        position = Coord2D(0, 0)
+        var positionRobot = Coord2D(0, 0)
+        var isSanta = true
+        for direction in instructions {
+            var index = 0
+            if isSanta {
+                position = updatePosition(coord: position, direction: direction)
+                index = toIndex(coord: position, width: bigNumber)
+            } else {
+                positionRobot = updatePosition(coord: positionRobot, direction: direction)
+                index = toIndex(coord: positionRobot, width: bigNumber)
+            }
+            isSanta = !isSanta
+            visitedHouses[index, default: 0] += 1
+        }
+        print("#visited houses (with robot) = \(visitedHouses.count)")
+    }
+}
