@@ -15,6 +15,10 @@ extension String {
         let fromIndex = index(from: from)
         return String(self[fromIndex...])
     }
+    func substring(to: Int) -> String {
+        let toIndex = index(from: to)
+        return String(self[..<toIndex])
+    }
 }
 
 enum CLIError: LocalizedError {

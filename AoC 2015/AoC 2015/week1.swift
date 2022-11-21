@@ -76,3 +76,17 @@ func day3(input: [String]) {
         print("#visited houses (with robot) = \(visitedHouses.count)")
     }
 }
+
+func day4(input: [String]) {
+    var lowestIndex = 0
+    // part 1
+    for key in input {
+        let (hash, md5, i) = findHashWithMD5That(startsWith: "00000", key: key)
+        print("\(key) -> \(hash): \(md5)")
+        lowestIndex = i
+    }
+    // part 2
+    let key = input.last!
+    let (h, m, _) = findHashWithMD5That(startsWith: "000000", key: key, start: lowestIndex)
+    print("\(key) -> \(h): \(m)")
+}
