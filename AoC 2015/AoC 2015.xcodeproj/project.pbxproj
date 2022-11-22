@@ -11,6 +11,7 @@
 		2830411B2919C4BC00010645 /* week1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2830411A2919C4BC00010645 /* week1.swift */; };
 		283041202919C83500010645 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2830411F2919C83500010645 /* util.swift */; };
 		288B5753292C334B00465061 /* crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B5752292C334B00465061 /* crypto.swift */; };
+		288B5757292C417000465061 /* naughty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B5756292C417000465061 /* naughty.swift */; };
 		28AFA6B3291B13930002FDC7 /* volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFA6B2291B13930002FDC7 /* volume.swift */; };
 		28AFA6B6291B1C270002FDC7 /* coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFA6B5291B1C270002FDC7 /* coordinates.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,9 @@
 		2830411F2919C83500010645 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		288B5751292C32F100465061 /* day4_input.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day4_input.txt; sourceTree = "<group>"; };
 		288B5752292C334B00465061 /* crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = crypto.swift; sourceTree = "<group>"; };
+		288B5754292C40EA00465061 /* day5_tests.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day5_tests.txt; sourceTree = "<group>"; };
+		288B5755292C40FC00465061 /* day5_input.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day5_input.txt; sourceTree = "<group>"; };
+		288B5756292C417000465061 /* naughty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = naughty.swift; sourceTree = "<group>"; };
 		28AFA6B1291B132C0002FDC7 /* day2_tests.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day2_tests.txt; sourceTree = "<group>"; };
 		28AFA6B2291B13930002FDC7 /* volume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = volume.swift; sourceTree = "<group>"; };
 		28AFA6B4291B17550002FDC7 /* day2_input.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day2_input.txt; sourceTree = "<group>"; };
@@ -76,11 +80,12 @@
 			isa = PBXGroup;
 			children = (
 				28AFA6B5291B1C270002FDC7 /* coordinates.swift */,
+				288B5752292C334B00465061 /* crypto.swift */,
 				283041132919C42E00010645 /* main.swift */,
+				288B5756292C417000465061 /* naughty.swift */,
 				2830411F2919C83500010645 /* util.swift */,
 				28AFA6B2291B13930002FDC7 /* volume.swift */,
 				2830411A2919C4BC00010645 /* week1.swift */,
-				288B5752292C334B00465061 /* crypto.swift */,
 			);
 			path = "AoC 2015";
 			sourceTree = "<group>";
@@ -95,6 +100,8 @@
 				28AFA6B7291B1E1F0002FDC7 /* day3_input.txt */,
 				28AFA6B8291B1E3E0002FDC7 /* day3_tests.txt */,
 				288B5751292C32F100465061 /* day4_input.txt */,
+				288B5754292C40EA00465061 /* day5_tests.txt */,
+				288B5755292C40FC00465061 /* day5_input.txt */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -163,6 +170,7 @@
 				28AFA6B6291B1C270002FDC7 /* coordinates.swift in Sources */,
 				288B5753292C334B00465061 /* crypto.swift in Sources */,
 				28AFA6B3291B13930002FDC7 /* volume.swift in Sources */,
+				288B5757292C417000465061 /* naughty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

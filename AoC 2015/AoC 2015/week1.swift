@@ -90,3 +90,12 @@ func day4(input: [String]) {
     let (h, m, _) = findHashWithMD5That(startsWith: "000000", key: key, start: lowestIndex)
     print("\(key) -> \(h): \(m)")
 }
+
+func day5(input: [String]) {
+    // part 1
+    let niceCount = input.filter { isNiceString($0) }.count
+    print("niceCount = \(niceCount)")
+    // part 2
+    let reallyNiceCount = input.filter { isReallyNiceString($0) }.count
+    print("reallyNiceCount = \(reallyNiceCount)")
+}
