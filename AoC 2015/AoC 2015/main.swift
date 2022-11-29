@@ -10,7 +10,7 @@ import Foundation
 func advent() {
     // https://adventofcode.com/2015
     do {
-        let (day, lines) = try parseCLI()
+        let (day, lines, output) = try parseCLI()
         switch(day) {
         case 1:
             day1(input: lines)
@@ -22,6 +22,8 @@ func advent() {
             day4(input: lines)
         case 5:
             day5(input: lines)
+        case 6:
+            try day6(input: lines, output: output)
         default:
             print("Invalid day: \(day)")
         }

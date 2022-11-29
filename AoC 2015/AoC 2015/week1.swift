@@ -7,6 +7,18 @@
 
 import Foundation
 
+
+func printHelpImageSequence(_ f: String) {
+    let fileURL = URL(fileURLWithPath: f)
+    let name = fileURL.lastPathComponent
+    let parent = fileURL.deletingLastPathComponent()
+    print("Images saved in \(parent)")
+    print("  To scale them up:\n\tmogrify -resize 10% *.png")
+    print("  To create a video from the frames:")
+    print("    \tffmpeg -r 24 -f image2 -s 100x100 -i \(name)%04d.png -vcodec libx264 -crf 25 -pix_fmt yuv420p output.mp4")
+}
+
+
 func findBasement(_ instructions: String) -> Int {
     var floor = 0
     var position = 1
@@ -98,4 +110,46 @@ func day5(input: [String]) {
     // part 2
     let reallyNiceCount = input.filter { isReallyNiceString($0) }.count
     print("reallyNiceCount = \(reallyNiceCount)")
+}
+
+func day6(input: [String], output: String?) throws {
+    let illu1 = Illumination()
+    let instructions = input.compactMap { try? Illumination.Instruction($0) }
+    // part 1
+    let palette1 = Color.blackAndWhitePalette
+    var frame = 0
+    if let pre = output {
+        try illu1.image.saveNumberedPng(i: frame, withPrefix: pre, palette: palette1)
+        frame += 1
+    }
+    for i in instructions {
+        illu1.apply(instruction: i)
+        if let pre = output {
+            try illu1.image.saveNumberedPng(i: frame, withPrefix: pre, palette: palette1)
+            frame += 1
+        }
+    }
+    let countLights = illu1.image.data.reduce(0, +)
+    print("countLights = \(countLights)")
+    // part 2
+    let illu2 = Illumination()
+    let palette2 = Color.grayScale(maxValue: 54)
+    if let pre = output {
+        frame = 0
+        try illu2.image.saveNumberedPng(i: frame, withPrefix: pre + "part2-", palette: palette2)
+        frame += 1
+    }
+    for i in instructions {
+        illu2.applyAnalog(instruction: i)
+        if let pre = output {
+            try illu2.image.saveNumberedPng(i: frame, withPrefix: pre + "part2-", palette: palette2)
+            frame += 1
+        }
+    }
+    let totalBrightness = illu2.image.data.reduce(0, +)
+    let maxValue = illu2.image.data.reduce(0, {max($0, $1)})
+    print("total brightness = \(totalBrightness); maxValue = \(maxValue)")
+    if let pre = output {
+        printHelpImageSequence(pre)
+    }
 }

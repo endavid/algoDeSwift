@@ -31,7 +31,7 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -53,7 +53,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "&quot;/Users/endavid/dev/algoDeSwift/AoC 2015/Resources/day5_input.txt&quot;"
+            argument = "&quot;/Users/endavid/dev/algoDeSwift/AoC 2015/Resources/day6_input.txt&quot; &quot;/Users/endavid/dev/algoDeSwift/output/day6-&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

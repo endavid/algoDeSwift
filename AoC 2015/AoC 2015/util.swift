@@ -47,7 +47,7 @@ enum CLIError: LocalizedError {
     }
 }
 
-func parseCLI() throws -> (day: Int, lines: [String]) {
+func parseCLI() throws -> (day: Int, lines: [String], output: String?) {
     if CommandLine.arguments.count == 1 {
         throw CLIError.noInputFile
     }
@@ -67,5 +67,6 @@ func parseCLI() throws -> (day: Int, lines: [String]) {
     }
     let contents = try String(contentsOfFile: filename)
     let lines = contents.split(separator: "\n").map { String($0) }
-    return (day, lines)
+    let output = CommandLine.arguments.count > 2 ? CommandLine.arguments[2] : nil
+    return (day, lines, output)
 }
