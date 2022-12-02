@@ -37,6 +37,12 @@ func day1(input: [String]) {
 }
 
 func day2(input: [String]) {
-    print(input)
+    let rps = RockPaperScissors()
+    // part 1
+    let total = rps.playStrategy(input: input)
+    print("finalScore = \(total)")
+    // part 2
+    let rightTotal = rps.playRightStrategy(input: input)
+    print("rightTotal = \(rightTotal)")
 }
 

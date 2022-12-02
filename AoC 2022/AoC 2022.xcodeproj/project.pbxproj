@@ -10,6 +10,7 @@
 		28B6DE3A293AB77C00662AC9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE39293AB77C00662AC9 /* main.swift */; };
 		28B6DE43293AB90100662AC9 /* week1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE42293AB90100662AC9 /* week1.swift */; };
 		28B6DE45293AB92F00662AC9 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE44293AB92F00662AC9 /* util.swift */; };
+		28B6DE47293ABF6300662AC9 /* RockPaperScissors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE46293ABF6300662AC9 /* RockPaperScissors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,7 @@
 		28B6DE40293AB85C00662AC9 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 		28B6DE42293AB90100662AC9 /* week1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = week1.swift; sourceTree = "<group>"; };
 		28B6DE44293AB92F00662AC9 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
+		28B6DE46293ABF6300662AC9 /* RockPaperScissors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				28B6DE39293AB77C00662AC9 /* main.swift */,
+				28B6DE46293ABF6300662AC9 /* RockPaperScissors.swift */,
 				28B6DE44293AB92F00662AC9 /* util.swift */,
 				28B6DE42293AB90100662AC9 /* week1.swift */,
 			);
@@ -130,6 +133,7 @@
 			files = (
 				28B6DE45293AB92F00662AC9 /* util.swift in Sources */,
 				28B6DE3A293AB77C00662AC9 /* main.swift in Sources */,
+				28B6DE47293ABF6300662AC9 /* RockPaperScissors.swift in Sources */,
 				28B6DE43293AB90100662AC9 /* week1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
