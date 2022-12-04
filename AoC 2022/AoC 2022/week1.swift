@@ -64,3 +64,14 @@ func day3(input: [String]) {
     let total3 = getTotalPriority(rucksacks: sacks3)
     print("sum of priorities for groups is \(total3)")
 }
+
+func day4(input: [String]) {
+    let pairs = input.map { RangePair($0) }
+    // part 1
+    let fullyContained = pairs.filter { $0.oneContainsTheOther }
+    print("There are \(fullyContained.count) fully contained pairs.")
+    // part 2
+    let someOverlap = pairs.filter { $0.overlap }
+    print("There are \(someOverlap.count) pairs with some overlap.")
+
+}
