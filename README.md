@@ -2,4 +2,7 @@
 
 Programming exercises in Swift from Advent of Code and other sources
 
-These exercises accompany a series of Twitch/Youtube programming lessons in Spanish.
+These exercises accompany a series of Twitch/Youtube programming lessons in Spanish:
+
+[@algoDeSwift](https://www.youtube.com/@algoDeSwift)
+
