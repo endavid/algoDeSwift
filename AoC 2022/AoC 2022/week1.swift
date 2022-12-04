@@ -46,3 +46,21 @@ func day2(input: [String]) {
     print("rightTotal = \(rightTotal)")
 }
 
+func getTotalPriority(rucksacks: [Rucksack]) -> Int {
+    let commonItems = rucksacks.compactMap { $0.getCommonItem() }
+    print(commonItems)
+    let priorities = commonItems.map { $0.1 }
+    return priorities.reduce(0, +)
+}
+
+func day3(input: [String]) {
+    let rucksacks = input.map { Rucksack($0) }
+    // part 1
+    let total = getTotalPriority(rucksacks: rucksacks)
+    print("sum of priorities is \(total)")
+    // part 2
+    let trios = input.chunked(into: 3)
+    let sacks3 = trios.map { Rucksack($0) }
+    let total3 = getTotalPriority(rucksacks: sacks3)
+    print("sum of priorities for groups is \(total3)")
+}

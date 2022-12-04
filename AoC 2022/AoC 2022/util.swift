@@ -7,6 +7,15 @@
 
 import Foundation
 
+extension Array {
+    // https://www.hackingwithswift.com/example-code/language/how-to-split-an-array-into-chunks
+    func chunked(into size: Int) -> [[Element]] {
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0 ..< Swift.min($0 + size, count)])
+        }
+    }
+}
+
 extension String {
     func index(from: Int) -> Index {
         return self.index(startIndex, offsetBy: from)
@@ -57,7 +66,11 @@ func parseCLI() throws -> (day: Int, lines: [String], output: String?) {
         throw CLIError.cantParseDay(name: name)
     }
     let contents = try String(contentsOfFile: filename)
-    let lines = contents.split(separator: "\n", omittingEmptySubsequences: false).map { String($0) }
+    var lines = contents.split(separator: "\n", omittingEmptySubsequences: false).map { String($0) }
+    while lines.last?.isEmpty ?? false {
+        // we've kept empty lines, but remove the empty lines at the end
+        let _ = lines.popLast()
+    }
     let output = CommandLine.arguments.count > 2 ? CommandLine.arguments[2] : nil
     return (day, lines, output)
 }
