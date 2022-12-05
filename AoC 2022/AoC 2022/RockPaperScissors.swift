@@ -23,7 +23,7 @@ class RockPaperScissors {
         .paper: 2,
         .scissors: 3
     ]
-    let winnindHands: [Hand: Hand] = [
+    let winningHands: [Hand: Hand] = [
         .rock: .scissors,
         .paper: .rock,
         .scissors: .paper
@@ -55,7 +55,7 @@ class RockPaperScissors {
         if opponent == you {
             return 3 + shapeScore
         }
-        if winnindHands[you] == opponent {
+        if winningHands[you] == opponent {
             return 6 + shapeScore
         }
         return shapeScore
@@ -64,7 +64,7 @@ class RockPaperScissors {
     func scoreGame(opponent: Hand, you: Strategy) -> Int {
         switch(you) {
         case .lose:
-            let yours = winnindHands[opponent]!
+            let yours = winningHands[opponent]!
             return handScores[yours]!
         case .draw:
             return 3 + handScores[opponent]!
