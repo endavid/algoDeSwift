@@ -89,3 +89,26 @@ func day5(input: [String]) {
     crateStacks.applyAllNew()
     print("top when finished: \(crateStacks.top)")
 }
+
+func findDistinctCharacters(_ line: String, count: Int) -> Int {
+    var i = 0
+    while i < line.count {
+        let a = line.index(from: i)
+        let b = line.index(from: min(i+count, line.count))
+        let set = Set<Character>(line[a..<b])
+        if set.count == count {
+            break
+        }
+        i += 1
+    }
+    return i + count
+}
+
+func day6(input: [String]) {
+    for line in input {
+        let startPacket = findDistinctCharacters(line, count: 4)
+        let startMessage = findDistinctCharacters(line, count: 14)
+        print("start of packet at \(startPacket)")
+        print("start of message at \(startMessage)")
+    }
+}

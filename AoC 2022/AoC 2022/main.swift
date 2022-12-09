@@ -22,6 +22,8 @@ func advent() {
             day4(input: lines)
         case 5:
             day5(input: lines)
+        case 6:
+            day6(input: lines)
         default:
             print("Invalid day: \(day)")
         }
