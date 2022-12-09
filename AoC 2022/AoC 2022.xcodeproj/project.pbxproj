@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2835F82C293D58E500B6B6D4 /* Rucksack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835F82B293D58E500B6B6D4 /* Rucksack.swift */; };
 		2835F82E293D61F200B6B6D4 /* RangePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835F82D293D61F200B6B6D4 /* RangePair.swift */; };
+		2860220B2943F61E00BBAFD5 /* CrateStacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2860220A2943F61E00BBAFD5 /* CrateStacks.swift */; };
 		28B6DE3A293AB77C00662AC9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE39293AB77C00662AC9 /* main.swift */; };
 		28B6DE43293AB90100662AC9 /* week1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE42293AB90100662AC9 /* week1.swift */; };
 		28B6DE45293AB92F00662AC9 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE44293AB92F00662AC9 /* util.swift */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		2835F82B293D58E500B6B6D4 /* Rucksack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rucksack.swift; sourceTree = "<group>"; };
 		2835F82D293D61F200B6B6D4 /* RangePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangePair.swift; sourceTree = "<group>"; };
+		2860220A2943F61E00BBAFD5 /* CrateStacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrateStacks.swift; sourceTree = "<group>"; };
 		28B6DE36293AB77C00662AC9 /* AoC 2022 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "AoC 2022"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B6DE39293AB77C00662AC9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		28B6DE40293AB85C00662AC9 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		28B6DE38293AB77C00662AC9 /* AoC 2022 */ = {
 			isa = PBXGroup;
 			children = (
+				2860220A2943F61E00BBAFD5 /* CrateStacks.swift */,
 				28B6DE39293AB77C00662AC9 /* main.swift */,
 				2835F82D293D61F200B6B6D4 /* RangePair.swift */,
 				28B6DE46293ABF6300662AC9 /* RockPaperScissors.swift */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2860220B2943F61E00BBAFD5 /* CrateStacks.swift in Sources */,
 				28B6DE45293AB92F00662AC9 /* util.swift in Sources */,
 				2835F82E293D61F200B6B6D4 /* RangePair.swift in Sources */,
 				28B6DE3A293AB77C00662AC9 /* main.swift in Sources */,

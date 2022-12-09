@@ -75,3 +75,17 @@ func day4(input: [String]) {
     print("There are \(someOverlap.count) pairs with some overlap.")
 
 }
+
+func day5(input: [String]) {
+    var crateStacks = CrateStacks(input: input)
+    print(crateStacks.stacks)
+    print(crateStacks.instructions)
+    // part 1
+    print("top at start: \(crateStacks.top)")
+    crateStacks.applyAll()
+    print("top when finished: \(crateStacks.top)")
+    // part 2
+    crateStacks = CrateStacks(input: input)
+    crateStacks.applyAllNew()
+    print("top when finished: \(crateStacks.top)")
+}
