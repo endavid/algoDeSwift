@@ -112,3 +112,24 @@ func day6(input: [String]) {
         print("start of message at \(startMessage)")
     }
 }
+
+func day7(input: [String]) {
+    let fs = Filesystem(log: input)
+    //fs.dump(dir: fs.root)
+    // part 1
+    let sizes = fs.dirPointers.map { key, dir in
+        (name: key, size: dir.size)
+    }
+    //print(sizes)
+    let sized100k = sizes.filter { $0.size <= 100000 }
+    //print(sized100k)
+    let total100k = sized100k.reduce(0, {$0 + $1.size})
+    print("Total <=100k: \(total100k)")
+    // part 2
+    let spaceLeft = 70_000_000 - fs.root.size
+    let spaceNeed = 30_000_000 - spaceLeft
+    print("space left: \(spaceLeft), space needed: \(spaceNeed)")
+    let bigEnough = sizes.filter { $0.size >= spaceNeed }.sorted { $0.size < $1.size }
+    print(bigEnough)
+    print("You should delete: \(bigEnough.first!)")
+}
