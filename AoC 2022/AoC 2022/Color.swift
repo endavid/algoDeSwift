@@ -35,6 +35,14 @@ struct Color {
         }
     }
     
+    static func redToYellow(maxValue: Int) -> Palette {
+        return (0...maxValue).map {
+            let r = 128 + 127 * $0 / maxValue
+            let g = 255 * $0 / maxValue
+            return Color(r: r, g: g, b: 0)
+        }
+    }
+    
     let r: Int
     let g: Int
     let b: Int

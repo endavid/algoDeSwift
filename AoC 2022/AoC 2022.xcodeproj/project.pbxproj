@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2804D42C2969DF760054A1EF /* RopeSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2804D42B2969DF760054A1EF /* RopeSim.swift */; };
+		2804D42E2969DFF90054A1EF /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2804D42D2969DFF90054A1EF /* Math.swift */; };
 		2835F82C293D58E500B6B6D4 /* Rucksack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835F82B293D58E500B6B6D4 /* Rucksack.swift */; };
 		2835F82E293D61F200B6B6D4 /* RangePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835F82D293D61F200B6B6D4 /* RangePair.swift */; };
 		2860220B2943F61E00BBAFD5 /* CrateStacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2860220A2943F61E00BBAFD5 /* CrateStacks.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2804D42B2969DF760054A1EF /* RopeSim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RopeSim.swift; sourceTree = "<group>"; };
+		2804D42D2969DFF90054A1EF /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		2835F82B293D58E500B6B6D4 /* Rucksack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rucksack.swift; sourceTree = "<group>"; };
 		2835F82D293D61F200B6B6D4 /* RangePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangePair.swift; sourceTree = "<group>"; };
 		2860220A2943F61E00BBAFD5 /* CrateStacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrateStacks.swift; sourceTree = "<group>"; };
@@ -85,8 +89,10 @@
 				2860220A2943F61E00BBAFD5 /* CrateStacks.swift */,
 				2860220C294404D600BBAFD5 /* Filesystem.swift */,
 				28B6DE39293AB77C00662AC9 /* main.swift */,
+				2804D42D2969DFF90054A1EF /* Math.swift */,
 				2835F82D293D61F200B6B6D4 /* RangePair.swift */,
 				28B6DE46293ABF6300662AC9 /* RockPaperScissors.swift */,
+				2804D42B2969DF760054A1EF /* RopeSim.swift */,
 				2835F82B293D58E500B6B6D4 /* Rucksack.swift */,
 				2860220E29452EC900BBAFD5 /* SimpleImage.swift */,
 				286022142945313A00BBAFD5 /* TreeVisibility.swift */,
@@ -158,9 +164,11 @@
 				2860220D294404D600BBAFD5 /* Filesystem.swift in Sources */,
 				2860220B2943F61E00BBAFD5 /* CrateStacks.swift in Sources */,
 				2860220F29452EC900BBAFD5 /* SimpleImage.swift in Sources */,
+				2804D42E2969DFF90054A1EF /* Math.swift in Sources */,
 				2860221129452FA400BBAFD5 /* Color.swift in Sources */,
 				28B6DE45293AB92F00662AC9 /* util.swift in Sources */,
 				2835F82E293D61F200B6B6D4 /* RangePair.swift in Sources */,
+				2804D42C2969DF760054A1EF /* RopeSim.swift in Sources */,
 				28B6DE3A293AB77C00662AC9 /* main.swift in Sources */,
 				28B6DE47293ABF6300662AC9 /* RockPaperScissors.swift in Sources */,
 				28B6DE43293AB90100662AC9 /* week1.swift in Sources */,

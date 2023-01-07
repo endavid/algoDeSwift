@@ -39,12 +39,18 @@ struct SimpleImage: CustomStringConvertible {
     func index(_ p: Coord2D) -> Int {
         return p.y * width + p.x
     }
+    func index(_ p: Vec2) -> Int {
+        return p.y * width + p.x
+    }
     
     func getValue(_ p: Coord2D) -> Int {
         return data[index(p)]
     }
     
     mutating func setValue(_ v: Int, at c: Coord2D) {
+        data[index(c)] = v
+    }
+    mutating func setValue(_ v: Int, at c: Vec2) {
         data[index(c)] = v
     }
     

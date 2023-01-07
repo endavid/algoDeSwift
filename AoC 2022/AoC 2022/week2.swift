@@ -7,6 +7,20 @@
 
 import Foundation
 
+func printHelpImageSequence(_ f: String) {
+    let fileURL = URL(fileURLWithPath: f)
+    let name = fileURL.lastPathComponent
+    let parent = fileURL.deletingLastPathComponent()
+    print("Images saved in \(parent)")
+    print("  To resize them (e.g.):\n\tmogrify -resize 10% \(name)*.png")
+    print("  \tmogrify -filter point -resize 400% \(name)*.png")
+    print("  To create a video from the frames:")
+    print("    \tffmpeg -r 24 -f image2 -s 100x100 -i \(name)%04d.png -vcodec libx264 -crf 25 -pix_fmt yuv420p output.mp4")
+    print("  To create an animated GIF from the frames:")
+    print("    \tconvert -delay 1x24 -loop 0 \(name)*.png \(name)anim.gif")
+}
+
+
 func day8(input: [String], output: String?) {
     let image = SimpleImage(lines: input)
     // part 1
@@ -30,5 +44,51 @@ func day8(input: [String], output: String?) {
         let url2 = URL(fileURLWithPath: "\(output)-scenic-scores.png")
         CGImageWriteToFile(img1, filename: url1)
         CGImageWriteToFile(img2, filename: url2)
+    }
+}
+
+func day9(input: [String], output: String?) throws {
+    let sim = RopeSim()
+    // part 1
+    for line in input {
+        sim.move(line)
+    }
+    print("Tail visited \(sim.visited.count) unique positions")
+    // part 2
+    let sim10 = RopeSim(ropeLength: 10)
+    for line in input {
+        sim10.move(line)
+    }
+    print("Tail visited \(sim10.visited.count) unique positions for rope length 10")
+    if let o = output {
+        let imgSize = sim10.bottomRight - sim10.topLeft + Vec2(1, 1)
+        let w = 2*((imgSize.x+1)/2)
+        let h = 2*((imgSize.y+1)/2)
+        let offset = Vec2.zero - sim10.topLeft
+        let maxVisits = sim10.visited.values.reduce(0, Swift.max)
+        print("image size: \(imgSize) -> \(w)x\(h); offset: \(offset); maxVisits: \(maxVisits)")
+        let sim = RopeSim(ropeLength: 10)
+        var frame = 0
+        var palette = Color.brownToGreenPalette
+        palette.insert(Color(hexValue: 0xff22ff), at: 1)
+        for i in 2...10 { // make all green
+            palette[i] = Color(hexValue: 0x11ff11)
+        }
+        palette = palette + Color.redToYellow(maxValue: maxVisits)
+        for line in input {
+            sim.move(line)
+            var img = SimpleImage(width: w, height: h)
+            // draw visits
+            for (k, v) in sim.visited {
+                img.setValue(v + 11, at: k + offset)
+            }
+            // draw rope
+            for i in (0..<sim.rope.count).reversed() {
+                img.setValue(10 - i, at: sim.rope[i] + offset)
+            }
+            try img.saveNumberedPng(i: frame, withPrefix: o, palette: palette)
+            frame += 1
+        }
+        printHelpImageSequence(o)
     }
 }
