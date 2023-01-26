@@ -36,6 +36,13 @@ struct SimpleImage: CustomStringConvertible {
         }
     }
     
+    func toHashes(empty: String = " ") -> String {
+        let chunks = data.chunked(into: width)
+        let m: [Int: String] = [0: empty, 1: "#"]
+        let rows = chunks.map { $0.reduce("", {$0 + m[$1, default: "@"]}) }
+        return rows.joined(separator: "\n")
+    }
+    
     func index(_ p: Coord2D) -> Int {
         return p.y * width + p.x
     }

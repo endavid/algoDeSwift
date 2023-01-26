@@ -30,6 +30,8 @@ func advent() {
             day8(input: lines, output: output)
         case 9:
             try day9(input: lines, output: output)
+        case 10:
+            day10(input: lines)
         default:
             print("Invalid day: \(day)")
         }

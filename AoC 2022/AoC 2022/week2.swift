@@ -92,3 +92,38 @@ func day9(input: [String], output: String?) throws {
         printHelpImageSequence(o)
     }
 }
+
+func day10(input: [String]) {
+    var cycle = 1
+    var X = 1
+    var strengths: [Int] = []
+    var image = SimpleImage(width: 40, height: 6)
+    let incCycle = { () in
+        if cycle % 40 == 20 {
+            strengths.append(X * cycle)
+        }
+        let y = (cycle - 1) / image.width
+        let x = (cycle - 1) % image.width
+        if x >= X-1 && x <= X+1 {
+            image.setValue(1, at: (x,y))
+        }
+        cycle += 1
+    }
+    for line in input {
+        if line == "noop" {
+            incCycle()
+        } else {
+            // addx V
+            let args = line.split(separator: " ")
+            incCycle()
+            incCycle()
+            X += Int(args[1])!
+        }
+    }
+    // part 1
+    print(strengths)
+    let total = strengths.reduce(0, +)
+    print("sum of six signal strengths is \(total)")
+    // part 2
+    print(image.toHashes())
+}
