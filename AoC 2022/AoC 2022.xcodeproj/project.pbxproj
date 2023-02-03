@@ -21,6 +21,7 @@
 		28B6DE43293AB90100662AC9 /* week1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE42293AB90100662AC9 /* week1.swift */; };
 		28B6DE45293AB92F00662AC9 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE44293AB92F00662AC9 /* util.swift */; };
 		28B6DE47293ABF6300662AC9 /* RockPaperScissors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE46293ABF6300662AC9 /* RockPaperScissors.swift */; };
+		28D63F09298C7B6400B31F80 /* KeepAway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D63F08298C7B6400B31F80 /* KeepAway.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +53,7 @@
 		28B6DE42293AB90100662AC9 /* week1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = week1.swift; sourceTree = "<group>"; };
 		28B6DE44293AB92F00662AC9 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		28B6DE46293ABF6300662AC9 /* RockPaperScissors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissors.swift; sourceTree = "<group>"; };
+		28D63F08298C7B6400B31F80 /* KeepAway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepAway.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				28B6DE44293AB92F00662AC9 /* util.swift */,
 				28B6DE42293AB90100662AC9 /* week1.swift */,
 				286022122945303400BBAFD5 /* week2.swift */,
+				28D63F08298C7B6400B31F80 /* KeepAway.swift */,
 			);
 			path = "AoC 2022";
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2860220D294404D600BBAFD5 /* Filesystem.swift in Sources */,
+				28D63F09298C7B6400B31F80 /* KeepAway.swift in Sources */,
 				2860220B2943F61E00BBAFD5 /* CrateStacks.swift in Sources */,
 				2860220F29452EC900BBAFD5 /* SimpleImage.swift in Sources */,
 				2804D42E2969DFF90054A1EF /* Math.swift in Sources */,

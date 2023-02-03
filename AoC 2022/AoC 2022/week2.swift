@@ -127,3 +127,13 @@ func day10(input: [String]) {
     // part 2
     print(image.toHashes())
 }
+
+
+func day11(input: [String]) {
+    // part 1
+    let play1 = KeepAway(notes: input) { $0 / 3 }
+    play1.play(rounds: 20, debug: true)
+    // part 2
+    let play2 = KeepAway(notes: input)
+    play2.play(rounds: 10000, debug: false)
+}
