@@ -43,6 +43,10 @@ struct SimpleImage: CustomStringConvertible {
         return rows.joined(separator: "\n")
     }
     
+    func isValid(_ p: Coord2D) -> Bool {
+        return p.x >= 0 && p.x < width && p.y >= 0 && p.y < height
+    }
+    
     func index(_ p: Coord2D) -> Int {
         return p.y * width + p.x
     }
@@ -69,6 +73,16 @@ struct SimpleImage: CustomStringConvertible {
     
     func getColumn(_ x: Int) -> [Int] {
         return (0..<height).map { getValue((x,$0)) }
+    }
+    
+    func get4Neighbors(_ p: Coord2D) -> [Coord2D] {
+        return [
+            // NSEW
+            (p.x - 1, p.y),
+            (p.x, p.y - 1),
+            (p.x + 1, p.y),
+            (p.x, p.y + 1)
+        ].filter { isValid($0) }
     }
     
     func getNeighborValuesToEdges(_ c: Coord2D) -> [ArraySlice<Int>] {

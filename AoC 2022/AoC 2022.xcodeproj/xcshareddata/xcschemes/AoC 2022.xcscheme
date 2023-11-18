@@ -53,7 +53,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "&quot;/Users/endavid/dev/algoDeSwift/AoC 2022/Resources/day11_input.txt&quot;"
+            argument = "&quot;/Users/endavid/dev/algoDeSwift/AoC 2022/Resources/day12_input.txt&quot; &quot;/Users/endavid/dev/advent/2022-12/output/day12_&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

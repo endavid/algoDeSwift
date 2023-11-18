@@ -17,6 +17,7 @@
 		2860221129452FA400BBAFD5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2860221029452FA400BBAFD5 /* Color.swift */; };
 		286022132945303400BBAFD5 /* week2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286022122945303400BBAFD5 /* week2.swift */; };
 		286022152945313A00BBAFD5 /* TreeVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286022142945313A00BBAFD5 /* TreeVisibility.swift */; };
+		288063132B0934FD00A0F99C /* Hill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288063122B0934FD00A0F99C /* Hill.swift */; };
 		28B6DE3A293AB77C00662AC9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE39293AB77C00662AC9 /* main.swift */; };
 		28B6DE43293AB90100662AC9 /* week1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE42293AB90100662AC9 /* week1.swift */; };
 		28B6DE45293AB92F00662AC9 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DE44293AB92F00662AC9 /* util.swift */; };
@@ -47,6 +48,7 @@
 		2860221029452FA400BBAFD5 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		286022122945303400BBAFD5 /* week2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = week2.swift; sourceTree = "<group>"; };
 		286022142945313A00BBAFD5 /* TreeVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeVisibility.swift; sourceTree = "<group>"; };
+		288063122B0934FD00A0F99C /* Hill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hill.swift; sourceTree = "<group>"; };
 		28B6DE36293AB77C00662AC9 /* AoC 2022 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "AoC 2022"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B6DE39293AB77C00662AC9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		28B6DE40293AB85C00662AC9 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
@@ -90,6 +92,8 @@
 				2860221029452FA400BBAFD5 /* Color.swift */,
 				2860220A2943F61E00BBAFD5 /* CrateStacks.swift */,
 				2860220C294404D600BBAFD5 /* Filesystem.swift */,
+				288063122B0934FD00A0F99C /* Hill.swift */,
+				28D63F08298C7B6400B31F80 /* KeepAway.swift */,
 				28B6DE39293AB77C00662AC9 /* main.swift */,
 				2804D42D2969DFF90054A1EF /* Math.swift */,
 				2835F82D293D61F200B6B6D4 /* RangePair.swift */,
@@ -101,7 +105,6 @@
 				28B6DE44293AB92F00662AC9 /* util.swift */,
 				28B6DE42293AB90100662AC9 /* week1.swift */,
 				286022122945303400BBAFD5 /* week2.swift */,
-				28D63F08298C7B6400B31F80 /* KeepAway.swift */,
 			);
 			path = "AoC 2022";
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				28B6DE43293AB90100662AC9 /* week1.swift in Sources */,
 				2835F82C293D58E500B6B6D4 /* Rucksack.swift in Sources */,
 				286022132945303400BBAFD5 /* week2.swift in Sources */,
+				288063132B0934FD00A0F99C /* Hill.swift in Sources */,
 				286022152945313A00BBAFD5 /* TreeVisibility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,10 +305,12 @@
 		28B6DE3E293AB77C00662AC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7JBVTX94L2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -312,10 +318,12 @@
 		28B6DE3F293AB77C00662AC9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7JBVTX94L2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

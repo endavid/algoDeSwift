@@ -137,3 +137,43 @@ func day11(input: [String]) {
     let play2 = KeepAway(notes: input)
     play2.play(rounds: 10000, debug: false)
 }
+
+func day12(input: [String], output: String?) {
+    let hill = Hill(lines: input)
+    // part 1
+    hill.climb(from: hill.start)
+    print("Climbed from \(hill.start) to \(hill.end) in \(hill.stepsShortest) steps")
+    // part 2
+    let hill2 = Hill(lines: input)
+    hill2.descend(from: hill.end)
+    var shortest = Int.max
+    for y in 0..<hill2.image.height {
+        for x in 0..<hill2.image.width {
+            let c = (x, y)
+            let h = hill2.image.getValue(c)
+            if h != 0 {
+                continue
+            }
+            let steps = hill2.shortest.getValue(c)
+            if steps < shortest {
+                print("\(c) is shorter: \(steps)")
+                shortest = steps
+            }
+        }
+    }
+    print("best: \(shortest)")
+    guard let output = output else {
+        return
+    }
+    let paletteHill = Color.heatmap(low: Color(hexValue: 0x3B270B), mid: Color(hexValue: 0x67C926), high: .white, maxValue: 25)
+    var palette = Color.heatmap(low: .blue, mid: .green, high: .red, maxValue: hill.stepsShortest)
+    palette.append(.white)
+    if let img = hill.image.toCGImage(palette: paletteHill), let img2 = hill.shortest.toCGImage(palette: palette), let img3 = hill2.shortest.toCGImage(palette: palette) {
+        let url = URL(fileURLWithPath: "\(output)hill.png")
+        CGImageWriteToFile(img, filename: url)
+        let url2 = URL(fileURLWithPath: "\(output)ascend.png")
+        CGImageWriteToFile(img2, filename: url2)
+        let url3 = URL(fileURLWithPath: "\(output)descend.png")
+        CGImageWriteToFile(img3, filename: url3)
+    }
+}
