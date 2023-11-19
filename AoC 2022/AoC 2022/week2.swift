@@ -177,3 +177,21 @@ func day12(input: [String], output: String?) {
         CGImageWriteToFile(img3, filename: url3)
     }
 }
+
+func day13(input: [String]) {
+    // part 1
+    let pairs = input.chunked(into: 3).map { ($0[0], $0[1]) }
+    let rightOrderCount = (0..<pairs.count).reduce(0) { sum, i in
+        let v = compareLists(pairs[i].0, pairs[i].1)
+        return sum + (v < 0 ? i + 1 : 0)
+    }
+    print("Right order count = \(rightOrderCount)")
+    // part 2
+    var all = input.filter { !$0.isEmpty }
+    all.sort { compareLists($0, $1) < 0 }
+    print(all)
+    let i1 = all.binarySearch { compareLists($0, "[[2]]") < 0 }
+    let i2 = all.binarySearch { compareLists($0, "[[6]]") < 0 }
+    let key = (i1 + 1) * (i2 + 2)
+    print("decoder key = \(key)")
+}
