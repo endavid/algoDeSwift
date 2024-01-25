@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://dg6v7k504lnuk"]
+
+[ext_resource type="Script" path="res://day_22_3d_tetris.gd" id="1_7vqy5"]
+[ext_resource type="Shader" path="res://MySky.gdshader" id="2_ihoha"]
+[ext_resource type="Script" path="res://Camera.gd" id="2_kwy4e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_53oxe"]
+shader = ExtResource("2_ihoha")
+shader_parameter/skyColor = Color(0.556863, 0.835294, 0.976471, 1)
+shader_parameter/horizonColor = Color(0.188235, 0.419608, 1, 1)
+
+[sub_resource type="Sky" id="Sky_luwgc"]
+sky_material = SubResource("ShaderMaterial_53oxe")
+
+[sub_resource type="Environment" id="Environment_83rde"]
+background_mode = 2
+sky = SubResource("Sky_luwgc")
+ambient_light_source = 3
+reflected_light_source = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6524q"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jvb68"]
+
+[sub_resource type="Theme" id="Theme_av2k5"]
+default_font_size = 48
+
+[node name="Day22 3D Tetris" type="Node3D"]
+script = ExtResource("1_7vqy5")
+fallSpeed = 8.0
+colors = PackedColorArray(0.639216, 0.439216, 0.733333, 1, 0.886275, 0.6, 0.784314, 1, 0.439216, 0.698039, 0.541176, 1, 0.290196, 0.858824, 0.419608, 1, 0.792157, 0.768627, 0.447059, 1, 0.937255, 0.584314, 0.27451, 1, 0.984314, 0.498039, 0.662745, 1)
+input = "res://day22_input.txt"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.838965, 0.544185, 0, -0.544185, 0.838965, -0.779777, 3.67239, 3.73728)
+script = ExtResource("2_kwy4e")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_83rde")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(500, 0, 0, 0, 1, 0, 0, 0, 500, 2.08165e-12, 1, 2.08165e-12)
+mesh = SubResource("PlaneMesh_6524q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.869891, -0.132419, 0.475136, -0.24143, 0.725696, 0.644265, -0.430117, -0.675153, 0.599306, 2.97137, 3.30176, -2.49797)
+light_color = Color(1, 0.976471, 0.694118, 1)
+light_energy = 1.93
+shadow_enabled = true
+
+[node name="CenterMarker" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, -1.74393e-16, 1.74393e-16, 1.74393e-16, 0.5, -1.74393e-16, -1.74393e-16, 1.74393e-16, 0.5, 2.08165e-12, 1, 2.08165e-12)
+mesh = SubResource("SphereMesh_jvb68")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 340.0
+offset_right = 812.0
+offset_bottom = 67.0
+theme = SubResource("Theme_av2k5")
+text = "AoC 2023 Day 22 Part 1"
