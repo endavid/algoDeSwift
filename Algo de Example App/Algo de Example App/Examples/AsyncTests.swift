@@ -53,6 +53,28 @@ func concurrentDQ<T: DefaultInitializable>(_ values: [T], op: @escaping (T) -> T
     return out
 }
 
+/// When calling an asynchronous method, execution suspends until that method returns.
+/// You write await in front of the call to mark the possible suspension point.
+func asyncOp<T>(_ value: T, op: @escaping (T) -> T) async -> T {
+    // Inside an asynchronous method, the flow of execution is suspended only when you call another asynchronous method — suspension is never implicit or preemptive — which means every possible suspension point is marked with await.
+    return op(value)
+}
+
+func asyncOp<T>(_ values: [T], op: @escaping (T) -> T) async -> [T] {
+    var out: [T] = []
+    await withTaskGroup(of: T.self) { group in
+        for v in values {
+            group.addTask {
+                return op(v)
+            }
+        }
+        for await v in group {
+            out.append(v)
+        }
+    }
+    return out
+}
+
 func colorToEmoji(_ s: String) -> String {
     let table = ["red": "❤️",
                  "green": "💚",
