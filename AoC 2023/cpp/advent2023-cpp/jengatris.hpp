@@ -65,10 +65,8 @@ public:
         
         GameState(IntAABBList pieces, std::shared_ptr<VoxelVolume<int> > volume);
         std::shared_ptr<GameState> copy() const;
-        
-    private:
-        GameState(const GameState&);
-        GameState& operator=(const GameState&);
+        GameState(const GameState&) = delete;
+        GameState& operator=(const GameState&) = delete;
     };
     
     Jengatris(std::istream& input);
