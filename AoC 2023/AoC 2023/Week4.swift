@@ -14,6 +14,7 @@ func day22(input: [String]) {
     let (firstFall, _) = Jengatris.simulate(start: jengatris.initialState)
     //firstFall.volume.dump()
     let essentials = Jengatris.findEssentials(state: firstFall)
+    print("There are \(essentials.count) essential pieces")
     //print(essentials)
     let disposableCount = jengatris.initialState.pieces.count - essentials.count
     print("There are \(disposableCount) disposable pieces")
