@@ -89,7 +89,7 @@ class Jengatris {
     }
     
     // AoC 2023 Day 22
-    // Part 2 (~1934 ms on M1 mac mini for my input)
+    // Part 2 (~1616 ms on M1 mac mini for my input)
     static func countFalls(state: GameState, ids: Set<Int>) -> Int {
         return ids.reduce(0) { sum, i in
             let (_, n) = Jengatris.simulate(start: state, without: i)
@@ -97,7 +97,7 @@ class Jengatris {
         }
     }
     
-    // Part 2 but using Grand Central Dispatch concurrency (~460 ms on M1 mac mini)
+    // Part 2 but using Grand Central Dispatch concurrency (~366 ms on M1 mac mini)
     static func concurrentCountFalls(state: GameState, ids: Set<Int>) -> Int {
         let indexArray: [Int] = Array(ids)
         var counts = [Int].init(repeating: 0, count: indexArray.count)
@@ -109,7 +109,7 @@ class Jengatris {
         return counts.reduce(0, +)
     }
     
-    // Part 2 but using async/await concurrency (~462 ms on my M1)
+    // Part 2 but using async/await concurrency (~361 ms on my M1)
     class ConcurrentFallCounter {
         let initialState: GameState
         init(state: GameState) {
