@@ -46,8 +46,8 @@ public:
     }
     std::unordered_set<T> collionsBelow(AABB<int> aabb) const;
 private:
-    VoxelVolume(const VoxelVolume&);
-    VoxelVolume& operator=(const VoxelVolume&);
+    VoxelVolume(const VoxelVolume&) = delete;
+    VoxelVolume& operator=(const VoxelVolume&) = delete;
     
     int width, depth, height;
     T* data;
