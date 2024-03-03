@@ -26,8 +26,7 @@ func day22(input: [String]) {
     print("Took \(t1 * 1_000) ms to simulate.")
     let t2 = measure {
         Task.synchronous {
-            let cfc = Jengatris.ConcurrentFallCounter(state: firstFall)
-            let n = await cfc.countFalls(ids: essentials)
+            let n = await Jengatris.countFallsAsync(state: firstFall, ids: essentials)
             print("\(n) bricks would fall.")
         }
     }

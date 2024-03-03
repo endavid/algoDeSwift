@@ -97,7 +97,7 @@ class Jengatris {
         }
     }
     
-    // Part 2 but using Grand Central Dispatch concurrency (~366 ms on M1 mac mini)
+    // Part 2 but using Grand Central Dispatch concurrency (~359 ms on M1 mac mini)
     static func concurrentCountFalls(state: GameState, ids: Set<Int>) -> Int {
         let indexArray: [Int] = Array(ids)
         var counts = [Int].init(repeating: 0, count: indexArray.count)
@@ -109,30 +109,21 @@ class Jengatris {
         return counts.reduce(0, +)
     }
     
-    // Part 2 but using async/await concurrency (~361 ms on my M1)
-    class ConcurrentFallCounter {
-        let initialState: GameState
-        init(state: GameState) {
-            initialState = state
-        }
-        func countFalls(id: Int) -> Int {
-            let (_, n) = Jengatris.simulate(start: initialState, without: id)
-            return n
-        }
-        func countFalls(ids: Set<Int>) async -> Int {
-            var sum = 0
-            await withTaskGroup(of: Int.self) { group in
-                for i in ids {
-                    group.addTask {
-                        return self.countFalls(id: i)
-                    }
-                }
-                for await n in group {
-                    sum += n
+    // Part 2 but using async/await concurrency (~366 ms on my M1)
+    static func countFallsAsync(state: GameState, ids: Set<Int>) async -> Int {
+        var sum = 0
+        await withTaskGroup(of: Int.self) { group in
+            for id in ids {
+                group.addTask {
+                    let (_, n) = Jengatris.simulate(start: state, without: id)
+                    return n
                 }
             }
-            return sum
+            for await n in group {
+                sum += n
+            }
         }
+        return sum
     }
 }
 
