@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		632652062B7A8BC7003372AE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 632652052B7A8BC7003372AE /* main.cpp */; };
 		6326520E2B7A8CF4003372AE /* jengatris.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6326520C2B7A8CF4003372AE /* jengatris.cpp */; };
+		63D077752B96162B00906970 /* week4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63D077742B96162B00906970 /* week4.cpp */; };
+		63D077782B96177A00906970 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63D077762B96177A00906970 /* util.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,10 @@
 		632652052B7A8BC7003372AE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6326520C2B7A8CF4003372AE /* jengatris.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = jengatris.cpp; sourceTree = "<group>"; };
 		6326520D2B7A8CF4003372AE /* jengatris.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = jengatris.hpp; sourceTree = "<group>"; };
+		63D077732B9615EF00906970 /* week4.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = week4.hpp; sourceTree = "<group>"; };
+		63D077742B96162B00906970 /* week4.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = week4.cpp; sourceTree = "<group>"; };
+		63D077762B96177A00906970 /* util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
+		63D077772B96177A00906970 /* util.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +66,13 @@
 		632652042B7A8BC7003372AE /* advent2023-cpp */ = {
 			isa = PBXGroup;
 			children = (
-				632652052B7A8BC7003372AE /* main.cpp */,
 				6326520C2B7A8CF4003372AE /* jengatris.cpp */,
 				6326520D2B7A8CF4003372AE /* jengatris.hpp */,
+				632652052B7A8BC7003372AE /* main.cpp */,
+				63D077762B96177A00906970 /* util.cpp */,
+				63D077772B96177A00906970 /* util.hpp */,
+				63D077742B96162B00906970 /* week4.cpp */,
+				63D077732B9615EF00906970 /* week4.hpp */,
 			);
 			path = "advent2023-cpp";
 			sourceTree = "<group>";
@@ -126,6 +136,8 @@
 			files = (
 				632652062B7A8BC7003372AE /* main.cpp in Sources */,
 				6326520E2B7A8CF4003372AE /* jengatris.cpp in Sources */,
+				63D077752B96162B00906970 /* week4.cpp in Sources */,
+				63D077782B96177A00906970 /* util.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

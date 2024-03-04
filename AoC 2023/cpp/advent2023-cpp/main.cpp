@@ -7,67 +7,57 @@
 
 #include <iostream>
 #include <fstream>
-#include <chrono>
+#include <sstream>
 #include <functional>
+#include <map>
 #include "jengatris.hpp"
+#include "week4.hpp"
 
 using namespace std;
 using namespace advent;
 
-double measure(const std::function<void()>& fn)
+
+
+string filename(const string& filepath)
 {
-    auto start_time = std::chrono::high_resolution_clock::now();
-    fn();
-    auto end_time = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
-    return duration.count() * 1e-3; // microsecs to millisecs
+    return filepath.substr(filepath.find_last_of('/') + 1);
 }
 
-int main(int argc, const char * argv[]) {
+string extractDay(const string& filepath)
+{
+    auto name = filename(filepath);
+    return name.substr(0, name.find_last_of('_'));
+}
+
+int main(int argc, const char * argv[])
+{
     if (argc <= 1)
     {
-        cout << "Missing argument" << std::endl;
+        cerr << "Missing argument" << std::endl;
         return 1;
     }
-    string filename(argv[1]);
-    ifstream file(filename);
+    string filepath(argv[1]);
+    auto day = extractDay(filepath);
+    if (day.empty())
+    {
+        cerr << "Can't parse day in " << filepath << ". File name should start with 'dayXX_'" << std::endl;
+        return 1;
+    }
+    cout << "AoC 2023 " << day << std::endl;
+    ifstream file(filepath);
     if (!file.is_open()) {
-        cerr << "Error opening file: " << filename << std::endl;
+        cerr << "Error opening file: " << filepath << std::endl;
         return 1;
     }
-    auto jenga = Jengatris(file);
+    std::map<std::string, std::function<void(std::istream&)>> funcs = {
+        { "day22", day22 }
+    };
+    if (funcs.find(day) == funcs.end()) {
+        std::cerr << "Function not found: " << day << std::endl;
+        file.close();
+        return 1;
+    }
+    funcs[day](file);
     file.close();
-    auto gameState = Jengatris::simulate(jenga.getState());
-    auto essentials = Jengatris::findEssentials(*gameState);
-    auto disposableCount = gameState->pieces.size() - essentials.size();
-    cout << "There are " << disposableCount << " disposable pieces." << std::endl;
-    // Part 2
-    size_t n;
-    auto elapsed = measure([essentials, gameState, &n]() {
-        n = Jengatris::countFalls(*gameState, essentials);
-    });
-    cout << n << " bricks would fall. Took " << elapsed << " ms." << std::endl;
-    elapsed = measure([essentials, gameState, &n]() {
-        n = Jengatris::countFallsThreaded(*gameState, essentials);
-    });
-    cout << n << " bricks would fall. Took " << elapsed << " ms. (threads)" << std::endl;
-    elapsed = measure([essentials, gameState, &n]() {
-        n = Jengatris::countFallsAsync(*gameState, essentials);
-    });
-    cout << n << " bricks would fall. Took " << elapsed << " ms. (async)" << std::endl;
-#ifndef __clang__
-    // To test these, install TBB and compile with gcc, i.e.
-    // > brew install tbb
-    // > g++-13 -std=c++17 -O3 -Wall -Wextra -pedantic -o advent advent2023-cpp/*.cpp -ltbb -I/opt/homebrew/Cellar/tbb/2021.11.0/include/ -L/opt/homebrew/Cellar/tbb/2021.11.0/lib
-    // > ./advent ../Resources/day22_input.txt
-    elapsed = measure([essentials, gameState, &n]() {
-        n = Jengatris::countFallsParallel(*gameState, essentials);
-    });
-    cout << n << " bricks would fall. Took " << elapsed << " ms. (parallel)" << std::endl;
-    elapsed = measure([essentials, gameState, &n]() {
-        n = Jengatris::countFallsTBB(*gameState, essentials);
-    });
-    cout << n << " bricks would fall. Took " << elapsed << " ms. (TBB)" << std::endl;
-#endif
     return 0;
 }
