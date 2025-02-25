@@ -90,6 +90,44 @@ func toCGImage(_ img: SimpleImage<Double>, valueScale: Double = 255.0) -> CGImag
     )
 }
 
+func toCGImage(_ imgs: [Axis: SimpleImage<Double>], valueScale: Double = 1.0) -> CGImage? {
+    let w = imgs[.x]!.width
+    let h = imgs[.x]!.height
+    let bytesPerPixel = 4
+    let pixelCount = w * h
+    let bitsPerComponent = 8
+    var imageBytes = [UInt8].init(repeating: 0, count: pixelCount * bytesPerPixel)
+    let normalize: (Double) -> Double = { v in
+        return clamp(255.0 * (0.5 * valueScale * v + 0.5), 0, 255.0)
+    }
+    for i in 0..<imgs[.x]!.data.count {
+        let r = normalize(imgs[.x]!.data[i])
+        let g = imgs[.y] == nil ? 0 : normalize(imgs[.y]!.data[i])
+        let b = imgs[.z] == nil ? 0 : normalize(imgs[.z]!.data[i])
+        imageBytes[4 * i] = UInt8(r)
+        imageBytes[4 * i + 1] = UInt8(g)
+        imageBytes[4 * i + 2] = UInt8(b)
+        imageBytes[4 * i + 3] = 255
+    }
+    guard let provider = CGDataProvider(data: NSData(bytes: &imageBytes, length: pixelCount * bytesPerPixel * MemoryLayout<UInt8>.size)) else {
+        return nil
+    }
+    let bitmapInfo:CGBitmapInfo = [.byteOrder32Big, CGBitmapInfo(rawValue: CGImageAlphaInfo.last.rawValue)]
+    return CGImage(
+        width: w,
+        height: h,
+        bitsPerComponent: bitsPerComponent,
+        bitsPerPixel: bytesPerPixel * bitsPerComponent,
+        bytesPerRow: w * bytesPerPixel,
+        space: CGColorSpace(name: CGColorSpace.sRGB)!,
+        bitmapInfo: bitmapInfo,
+        provider: provider,
+        decode: nil,
+        shouldInterpolate: false,
+        intent: .defaultIntent
+    )
+}
+
 /** Saves image to disk
 *  @see http://stackoverflow.com/questions/1320988/saving-cgimageref-to-a-png-file
 */

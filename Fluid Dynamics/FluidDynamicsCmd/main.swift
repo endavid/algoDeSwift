@@ -29,11 +29,18 @@ func fluidTests(output: String) {
     boxedFluid.addBox(1.0, from: (10,10), to: (60,60))
     boxedFluid.addBox(1.0, from: (100,100), to: (150,150))
     boxedFluid.addBox(1.0, from: (200,200), to: (250,250))
+    let boxedVelocityField = BoxedVelocityField(n: 256)
+    boxedVelocityField.addOmni(magnitude: 0.1, center: (80, 80), radius: 40)
+    boxedVelocityField.addOmni(magnitude: -0.1, center: (170, 170), radius: 40)
+    if let cgImage = toCGImage(boxedVelocityField.field, valueScale: 8.0) {
+        saveNumberedPng(image: cgImage, i: 0, withPrefix: "\(output)v_")
+    }
     for i in 0..<20 {
         if let cgImage = toCGImage(boxedFluid.image) {
             saveNumberedPng(image: cgImage, i: i, withPrefix: output)
         }
         boxedFluid.diffuse()
+        boxedFluid.advection(velocity: boxedVelocityField)
     }
 }
 
