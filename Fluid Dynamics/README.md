@@ -19,7 +19,7 @@ Ref. “Real-time fluid dynamics for games”, Jos Stam GDC 2003: [PDF](https://
 Density moving through a velocity field,
 
 ```math
-\frac{\partial\rho}{\partial t} = -(\bold{u}\cdot\nabla)\rho + \kappa\nabla^2\rho+S
+\frac{\partial\rho}{\partial t} = -(\textbf{u}\cdot\nabla)\rho + \kappa\nabla^2\rho+S
 ```
 
 where **u** is the velocity.
@@ -33,7 +33,7 @@ Terms:
 ## Velocity Field Equation
 
 ```math
-\frac{\partial\bold{u}}{\partial t} = -(\bold{u}\cdot\nabla)\bold{u} + \nu\nabla^2\bold{u}+\bold{f}
+\frac{\partial\textbf{u}}{\partial t} = -(\textbf{u}\cdot\nabla)\textbf{u} + \nu\nabla^2\textbf{u}+\textbf{f}
 ```
 
 Terms:
