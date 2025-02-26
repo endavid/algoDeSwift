@@ -20,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		630E02C92D6DE31600D86856 /* FluidDynamicsCmd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FluidDynamicsCmd; sourceTree = BUILT_PRODUCTS_DIR; };
+		630E02F02D6F647E00D86856 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -44,6 +45,7 @@
 		630E02C02D6DE31600D86856 = {
 			isa = PBXGroup;
 			children = (
+				630E02F02D6F647E00D86856 /* README.md */,
 				630E02CB2D6DE31600D86856 /* FluidDynamicsCmd */,
 				630E02CA2D6DE31600D86856 /* Products */,
 			);
