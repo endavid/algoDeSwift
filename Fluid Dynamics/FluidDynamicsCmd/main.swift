@@ -32,15 +32,16 @@ func fluidTests(output: String) {
     let boxedVelocityField = BoxedVelocityField(n: 256)
     boxedVelocityField.addOmni(magnitude: 0.1, center: (80, 80), radius: 40)
     boxedVelocityField.addOmni(magnitude: -0.1, center: (170, 170), radius: 40)
-    if let cgImage = toCGImage(boxedVelocityField.field, valueScale: 8.0) {
-        saveNumberedPng(image: cgImage, i: 0, withPrefix: "\(output)v_")
-    }
-    for i in 0..<20 {
+    for i in 0..<30 {
+        if let cgImage = toCGImage(boxedVelocityField.field, valueScale: 8.0) {
+            saveNumberedPng(image: cgImage, i: i, withPrefix: "\(output)v_")
+        }
         if let cgImage = toCGImage(boxedFluid.image) {
             saveNumberedPng(image: cgImage, i: i, withPrefix: output)
         }
         boxedFluid.diffuse()
-        boxedFluid.advection(velocity: boxedVelocityField)
+        boxedFluid.advect(velocity: boxedVelocityField)
+        boxedVelocityField.step()
     }
 }
 

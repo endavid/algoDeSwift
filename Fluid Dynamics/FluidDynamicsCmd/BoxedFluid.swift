@@ -37,7 +37,7 @@ class BoxedFluid {
         }
     }
     
-    func advection(velocity: BoxedVelocityField) {
+    func advect(velocity: BoxedVelocityField) {
         let d0 = image
         let dt0 = dt * Double(n)
         for i in 1...n {
