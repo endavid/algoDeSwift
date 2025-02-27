@@ -65,6 +65,7 @@ Terms:
 ```
 
 ![diffusion.png](figures/diffusion.png)
+*Example of applying diffusion on 3 square sources*
 
 ### Advection
 
@@ -95,3 +96,32 @@ Terms:
 ```
 
 ![advection.png](figures/advection.png)
+*Example of applying diffusion and advection using the velocity field from the left. The values are centred, so values smaller than 0.5 represent negative values. The upper left circle is pointing outwards, and the bottom right is pointing inwards.*
+
+### Diffusion and self-advection of the velocity field
+
+Similar to the above, but applied separately to each axis.
+
+![omni-no-projection.png](figures/omni-no-projection.png)
+*This applies diffusion and self-advection, but without projection*
+
+When applying projection for mass conservation (see details in paper or Github):
+
+![omni-projection.png](figures/omni-projection.png)
+*Same as above, but applying projection on each step for mass conservation*
+
+Here’s an example of a vortex (spiral force), without projection:
+
+![vortex-no-projection.png](figures/vortex-no-projection.png)
+*Vortex without the projection step (diffusion and self-advection only)*
+
+And the same example but with projection:
+
+![vortex-projection.png](figures/vortex-projection.png)
+*Vortex with projection for mass conservation*
+
+## Combined example
+
+Here’s an example of a fluid (density) with a varying velocity field:
+
+[fluid-demo.mp4](figures/fluid-demo.mp4)
