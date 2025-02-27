@@ -5,6 +5,8 @@
 //  Created by David Gavilan Ruiz on 25/02/2025.
 //
 
+import Foundation
+
 /// Naive implementation of fluid in a box
 /// from "Real-Time Fluid Dynamics for Games", GDC 2003
 class BoxedVelocityField {
@@ -39,6 +41,52 @@ class BoxedVelocityField {
                 // cos = x / r; sin = y / r
                 field[.x]!.addValue(magnitude * x / r, at: (i,j))
                 field[.y]!.addValue(magnitude * y / r, at: (i,j))
+            }
+        }
+    }
+    
+    func addSpiral(magnitude: Double, center: Coord2D, radius: Int, clockwise: Bool = true) {
+        let rangex = max(0, center.x - radius)...min(center.x + radius, n + 1)
+        let rangey = max(0, center.y - radius)...min(center.y + radius, n + 1)
+        
+        for i in rangex {
+            let x = Double(i - center.x) / Double(radius)
+            for j in rangey {
+                let y = Double(j - center.y) / Double(radius)
+                
+                if x * x + y * y > 1 {
+                    // Outside the circle
+                    continue
+                }
+                
+                var r = sqrt(x * x + y * y)
+                if r == 0 {
+                    r = 1 // Prevent division by zero
+                }
+                
+                let cosTheta = x / r
+                let sinTheta = y / r
+                
+                // Perpendicular direction to create a spiral effect
+                let forceX = magnitude * (clockwise ? -sinTheta : sinTheta) / r
+                let forceY = magnitude * (clockwise ? cosTheta : -cosTheta) / r
+                
+                field[.x]!.addValue(forceX, at: (i, j))
+                field[.y]!.addValue(forceY, at: (i, j))
+            }
+        }
+    }
+    
+    func addSinusoidal(magnitude: Double, frequency: Double, phase: Double) {
+        for i in 0..<n {
+            for j in 0..<n {
+                let x = Double(i) / Double(n)
+                let y = Double(j) / Double(n)
+                let forceX = magnitude * sin(2 * .pi * frequency * x + phase)
+                let forceY = magnitude * cos(2 * .pi * frequency * y + phase)
+                
+                field[.x]!.addValue(forceX, at: (i, j))
+                field[.y]!.addValue(forceY, at: (i, j))
             }
         }
     }
@@ -101,37 +149,6 @@ class BoxedVelocityField {
     }
     
     private func project(_ vfCopy: BoxedVelocityField) {
-        /*
-         void project ( int N, float * u, float * v, float * p, float * div )
-         {
-         int i, j, k;
-         float h;
-         h = 1.0/N;
-         for ( i=1 ; i<=N ; i++ ) {
-         for ( j=1 ; j<=N ; j++ ) {
-         div[IX(i,j)] = -0.5*h*(u[IX(i+1,j)]-u[IX(i-1,j)]+
-         v[IX(i,j+1)]-v[IX(i,j-1)]);
-         p[IX(i,j)] = 0;
-         }
-         }
-         set_bnd ( N, 0, div ); set_bnd ( N, 0, p );
-         for ( k=0 ; k<20 ; k++ ) {
-         for ( i=1 ; i<=N ; i++ ) {
-         for ( j=1 ; j<=N ; j++ ) {
-         p[IX(i,j)] = (div[IX(i,j)]+p[IX(i-1,j)]+p[IX(i+1,j)]+p[IX(i,j-1)]+p[IX(i,j+1)])/4;
-         }
-         }
-         set_bnd ( N, 0, p );
-         }
-         for ( i=1 ; i<=N ; i++ ) {
-         for ( j=1 ; j<=N ; j++ ) {
-         u[IX(i,j)] -= 0.5*(p[IX(i+1,j)]-p[IX(i-1,j)])/h;
-         v[IX(i,j)] -= 0.5*(p[IX(i,j+1)]-p[IX(i,j-1)])/h;
-         }
-         }
-         set_bnd ( N, 1, u ); set_bnd ( N, 2, v );
-         }
-         */
         let h = 1.0 / Double(n)
         for i in 1...n {
             for j in 1...n {
