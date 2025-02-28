@@ -63,10 +63,31 @@ func fluidTests(output: String) {
     }
 }
 
+func fluidTestForwardAdvection(output: String) {
+    let boxedFluid = BoxedFluid(n: 256)
+    boxedFluid.addBox(1.0, from: (10,10), to: (60,60))
+    boxedFluid.addBox(1.0, from: (100,100), to: (150,150))
+    boxedFluid.addBox(1.0, from: (200,200), to: (250,250))
+    let boxedVelocityField = BoxedVelocityField(n: 256)
+    boxedVelocityField.addSpiral(magnitude: 0.1, center: (128, 128), radius: 100)
+    for i in 0..<20 {
+        if let cgImage = toCGImage(boxedVelocityField.field, valueScale: 8.0) {
+            saveNumberedPng(image: cgImage, i: i, withPrefix: "\(output)v_")
+        }
+        if let cgImage = toCGImage(boxedFluid.image) {
+            saveNumberedPng(image: cgImage, i: i, withPrefix: output)
+        }
+        boxedFluid.diffuse()
+        boxedFluid.advectForward(velocity: boxedVelocityField)
+        boxedVelocityField.step()
+    }
+}
+
 func main() {
     do {
         let output = try parseCLI()
         fluidTests(output: output)
+        //fluidTestForwardAdvection(output: output)
         printHelpImageSequence(output)
     } catch {
         print(error.localizedDescription)

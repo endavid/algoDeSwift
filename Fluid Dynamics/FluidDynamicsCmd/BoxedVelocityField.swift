@@ -133,6 +133,48 @@ class BoxedVelocityField {
         applyBoundaryConditions(axis: axis)
     }
     
+    private func advectForward(axis: Axis, velocity: BoxedVelocityField) {
+        let d0 = field[axis]!
+        let dt0 = dt * Double(n)
+        
+        // Create a temporary field to accumulate values
+        var newField = d0
+
+        for i in 1...n {
+            for j in 1...n {
+                let v = velocity.get(i, j)
+                
+                // Compute forward position
+                let x = clamp(Double(i) + dt0 * v.x, 0.5, Double(n) + 0.5)
+                let y = clamp(Double(j) + dt0 * v.y, 0.5, Double(n) + 0.5)
+                
+                let i0 = Int(x)
+                let i1 = i0 + 1
+                let j0 = Int(y)
+                let j1 = j0 + 1
+                
+                let s1 = x - Double(i0)
+                let s0 = 1 - s1
+                let t1 = y - Double(j0)
+                let t0 = 1 - t1
+                
+                let a = s0 * (t0 * d0.get(i0, j0) + t1 * d0.get(i0, j1))
+                let b = s1 * (t0 * d0.get(i1, j0) + t1 * d0.get(i1, j1))
+
+                // Instead of setting at (i,j), distribute to (i0, j0), (i0, j1), (i1, j0), (i1, j1)
+                newField.addValue((a + b) * 0.25, at: (i0, j0))
+                newField.addValue((a + b) * 0.25, at: (i0, j1))
+                newField.addValue((a + b) * 0.25, at: (i1, j0))
+                newField.addValue((a + b) * 0.25, at: (i1, j1))
+            }
+        }
+        
+        // Copy the new field back
+        field[axis] = newField
+        
+        applyBoundaryConditions(axis: axis)
+    }
+    
     private func applyBoundaryConditions(axis: Axis, sa: Double? = nil, sb: Double? = nil) {
         let signA = sa ?? (axis == .x ? -1.0 : 1.0)
         let signB = sb ?? (axis == .y ? -1.0 : 1.0)
@@ -188,8 +230,13 @@ class BoxedVelocityField {
     
     func advect() {
         let vfCopy = copy()
+        #if true
         advect(axis: .x, velocity: vfCopy)
         advect(axis: .y, velocity: vfCopy)
+        #else
+        advectForward(axis: .x, velocity: vfCopy)
+        advectForward(axis: .y, velocity: vfCopy)
+        #endif
     }
     
     func step() {
