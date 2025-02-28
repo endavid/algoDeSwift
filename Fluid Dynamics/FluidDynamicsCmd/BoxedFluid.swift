@@ -65,9 +65,6 @@ class BoxedFluid {
         let d0 = image
         let dt0 = dt * Double(n)
         
-        // Create a temporary field to accumulate values
-        var newField = d0
-
         for i in 1...n {
             for j in 1...n {
                 let v = velocity.get(i, j)
